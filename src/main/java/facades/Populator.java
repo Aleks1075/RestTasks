@@ -19,9 +19,9 @@ public class Populator {
     public static void populate(){
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         FacadeExample fe = FacadeExample.getFacadeExample(emf);
-        fe.create(new PersonDTO(new Person("Jesper", "Hansen", "12345678")));
-        fe.create(new PersonDTO(new Person("Harald", "Olsen", "12345876")));
-        fe.create(new PersonDTO(new Person("Jon", "Jensen", "87654321")));
+        fe.create(new PersonDTO(new Person("Bruno", "Hansen", "12345678")));
+        fe.create(new PersonDTO(new Person("Raphael", "Olsen", "12345876")));
+        fe.create(new PersonDTO(new Person("David", "Jensen", "87654321")));
     }
     
     public static void main(String[] args) {

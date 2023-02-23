@@ -4,9 +4,9 @@ POST http://localhost:8080/rest_start/api/person
 Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
-{"firstName": "Jon", "lastName": "Hammer", "phone": "12345678"}
+{"firstName": "Michael", "lastName": "Jordan", "phone": "12345678"}
 ###
 PUT http://localhost:8080/rest_start/api/person/6
 ###
-DELETE http://localhost:8080/rest_start/api/person/12
+DELETE http://localhost:8080/rest_start/api/person/9
 

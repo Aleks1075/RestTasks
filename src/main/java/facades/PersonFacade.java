@@ -2,6 +2,7 @@ package facades;
 
 import dtos.PersonDTO;
 import entities.Person;
+import errorhandling.PersonNotFoundException;
 
 import java.util.Date;
 import java.util.List;
@@ -47,31 +48,29 @@ public class PersonFacade implements IPersonFacade {
     }
 
     @Override
-    public PersonDTO deletePerson(int id) throws Exception {
+    public PersonDTO deletePerson(int id) throws PersonNotFoundException {
         EntityManager em = getEntityManager();
         try {
             Person person = em.find(Person.class, id);
             if (person == null) {
-                throw new Exception("Could not delete, provided id does not exist");
+                throw new PersonNotFoundException("No person with provided id found");
             }
             em.getTransaction().begin();
             em.remove(person);
             em.getTransaction().commit();
             return new PersonDTO(person);
-        } catch (Exception ex) {
-            throw new Exception("Could not delete person: " + ex.getMessage());
         } finally {
             em.close();
         }
     }
 
     @Override
-    public PersonDTO getPersonById(int id) {
+    public PersonDTO getPersonById(int id) throws PersonNotFoundException {
         EntityManager em = getEntityManager();
         try {
             Person person = em.find(Person.class, id);
             if (person == null) {
-                throw new IllegalArgumentException("No person with provided id found");
+                throw new PersonNotFoundException("No person with provided id found");
             }
             return new PersonDTO(person);
         } finally {
@@ -92,13 +91,13 @@ public class PersonFacade implements IPersonFacade {
     }
 
     @Override
-    public PersonDTO editPerson(PersonDTO personDTO) {
+    public PersonDTO editPerson(PersonDTO personDTO) throws PersonNotFoundException {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             Person person = em.find(Person.class, personDTO.getId());
             if (person == null) {
-                throw new IllegalArgumentException("No person with provided id found");
+                throw new PersonNotFoundException("No person with provided id found");
             }
             person.setFirstName(personDTO.getFirstName());
             person.setLastName(personDTO.getLastName());
