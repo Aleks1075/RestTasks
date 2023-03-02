@@ -1,6 +1,7 @@
 //package facades;
 //
 //import dtos.PersonDTO;
+//import errorhandling.PersonNotFoundException;
 //import utils.EMF_Creator;
 //import entities.Person;
 //import javax.persistence.EntityManager;
@@ -17,7 +18,7 @@
 //public class FacadeExampleTest {
 //
 //    private static EntityManagerFactory emf;
-//    private static FacadeExample facade;
+//    private static PersonFacade facade;
 //
 //    public FacadeExampleTest() {
 //    }
@@ -25,7 +26,7 @@
 //    @BeforeAll
 //    public static void setUpClass() {
 //       emf = EMF_Creator.createEntityManagerFactoryForTest();
-//       facade = FacadeExample.getFacadeExample(emf);
+//       facade = PersonFacade.getPersonFacade(emf);
 //    }
 //
 //    @AfterAll
@@ -56,12 +57,12 @@
 //    }
 //
 //    @Test
-//    public void testGetPersonById() {
-//        int id = 4; // or any other valid ID
+//    public void testGetPersonById() throws PersonNotFoundException {
+//        int id = 1; // or any other valid ID
 //        PersonDTO expected = new PersonDTO(new Person("Jesper", "Hansen", "12345678"));
 //        expected.setId(id);
 //
-//        PersonDTO actual = facade.getById(id);
+//        PersonDTO actual = facade.getPersonById(id);
 //
 //        assertEquals(expected.getFirstName(), actual.getFirstName());
 //        assertEquals(expected.getLastName(), actual.getLastName());

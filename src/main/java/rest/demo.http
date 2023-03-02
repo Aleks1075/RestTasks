@@ -8,5 +8,5 @@ Content-Type: application/json
 ###
 PUT http://localhost:8080/rest_start/api/person/6
 ###
-DELETE http://localhost:8080/rest_start/api/person/9
+DELETE http://localhost:8080/rest_start/api/person/8
 
